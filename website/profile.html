@@ -232,7 +232,7 @@
       <h2>Win Rate</h2>
 
       <div class="rating" id="winRate">
-        20.0%
+        —
       </div>
 
     </section>
@@ -312,13 +312,20 @@
         contestant.form
           ? contestant.form.split("").join(" ")
           : "—";
-document.getElementById("battles").textContent = contestant.battles;
-document.getElementById("wins").textContent = contestant.wins;
-document.getElementById("losses").textContent = contestant.losses;
-document.getElementById("draws").textContent = contestant.draws;
+const battles = contestant.battles ?? 0;
+const wins = contestant.wins ?? 0;
+const losses = contestant.losses ?? 0;
+const draws = contestant.draws ?? 0;
+
+document.getElementById("battles").textContent = battles;
+document.getElementById("wins").textContent = wins;
+document.getElementById("losses").textContent = losses;
+document.getElementById("draws").textContent = draws;
+
+const winRate = battles > 0 ? (wins / battles) * 100 : 0;
 
 document.querySelector("#winRate").textContent =
-  contestant.winRate.toFixed(1) + "%";
+  winRate.toFixed(1) + "%";
 const peakElo = contestant.peakElo;
 const lowestElo = contestant.lowestElo;
 
