@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Battles — DesiBabeBattle</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1020;
+      color: white;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      border-bottom: 1px solid #252b40;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+    }
+
+    nav a {
+      color: #b8bdd0;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 50px 20px;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .page-title h1 {
+      font-size: 42px;
+      margin: 0 0 12px;
+    }
+
+    .page-title p {
+      color: #b8bdd0;
+      font-size: 17px;
+    }
+
+    .battle-section {
+      margin-bottom: 50px;
+    }
+
+    .battle-section h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .battle-card {
+      background: #151b2d;
+      border: 1px solid #252b40;
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .battle-title {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .battle-status {
+      color: #ff3b81;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .battle-info {
+      color: #b8bdd0;
+      line-height: 1.6;
+    }
+
+    .battle-button {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      background: #ff3b81;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .battle-button:hover {
+      opacity: 0.9;
+    }
+
+    .empty-state {
+      background: #151b2d;
+      border: 1px solid #252b40;
+      border-radius: 14px;
+      padding: 30px;
+      text-align: center;
+      color: #777f98;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 40px;
+      border-top: 1px solid #252b40;
+      color: #777f98;
+    }
+
+    @media (max-width: 800px) {
+      header {
+        flex-direction: column;
+        gap: 16px;
+        padding: 18px 20px;
+      }
+
+      nav {
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .page-title h1 {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">DesiBabeBattle</div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="battles.html">Battles</a>
+      <a href="actresses.html">Actresses</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-title">
+      <h1>Battles</h1>
+      <p>See current and completed DesiBabeBattle contests.</p>
+    </section>
+
+    <section class="battle-section">
+      <h2>🔴 Live Battles</h2>
+
+      <div class="empty-state">
+        No live battles right now.
+      </div>
+    </section>
+
+    <section class="battle-section">
+      <h2>🏁 Completed Battles</h2>
+
+      <div class="empty-state">
+        No completed battles to display yet.
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>DesiBabeBattle © 2026</p>
+  </footer>
+
+</body>
+</html>
