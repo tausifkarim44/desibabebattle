@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alia Bhatt — DesiBabeBattle</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1020;
+      color: white;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      border-bottom: 1px solid #252b40;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+    }
+
+    nav a {
+      color: #b8bdd0;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 50px 20px;
+    }
+
+    .profile-header {
+      text-align: center;
+      padding: 20px 0 40px;
+    }
+
+    .avatar {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #252b40;
+    }
+
+    .profile-header h1 {
+      font-size: 38px;
+      margin: 20px 0 8px;
+    }
+
+    .rating {
+      color: #ff3b81;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .rank {
+      color: #b8bdd0;
+      margin-top: 6px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .stat {
+      background: #151b2d;
+      border: 1px solid #252b40;
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .stat-label {
+      color: #777f98;
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    .section {
+      background: #151b2d;
+      border: 1px solid #252b40;
+      border-radius: 14px;
+      padding: 24px;
+      margin-top: 20px;
+    }
+
+    .section h2 {
+      margin-top: 0;
+      font-size: 22px;
+    }
+
+    .form {
+      font-size: 20px;
+      letter-spacing: 5px;
+      color: #ff3b81;
+    }
+
+    .rating-range {
+      display: flex;
+      justify-content: space-between;
+      color: #b8bdd0;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 35px;
+      color: #ff3b81;
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 16px;
+        padding: 18px 20px;
+      }
+
+      nav {
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      main {
+        padding: 35px 14px;
+      }
+
+      .avatar {
+        width: 140px;
+        height: 140px;
+      }
+
+      .profile-header h1 {
+        font-size: 30px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">DesiBabeBattle</div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="#">Battles</a>
+      <a href="actresses.html">Actresses</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="profile-header">
+
+      <img
+        class="avatar"
+        src="../public/avatars/alia-bhatt.jpg"
+        alt="Alia Bhatt"
+      >
+
+      <h1>Alia Bhatt</h1>
+
+      <div class="rating">
+        1500 Elo
+      </div>
+
+      <div class="rank">
+        Global Rank #1
+      </div>
+
+    </section>
+
+    <section class="stats">
+
+      <div class="stat">
+        <div class="stat-value" id="battles">0</div>
+        <div class="stat-label">Battles</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-value" id="wins">0</div>
+        <div class="stat-label">Wins</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-value" id="losses">0</div>
+        <div class="stat-label">Losses</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-value" id="draws">0</div>
+        <div class="stat-label">Draws</div>
+      </div>
+
+    </section>
+
+    <section class="section">
+
+      <h2>Win Rate</h2>
+
+      <div class="rating" id="winRate">
+        20.0%
+      </div>
+
+    </section>
+
+    <section class="section">
+
+      <h2>Recent Form</h2>
+
+      <div class="form">
+        W D D D
+      </div>
+
+    </section>
+
+    <section class="section">
+
+      <h2>Elo Range</h2>
+
+      <div class="rating-range">
+        <span id="lowestElo">Lowest: 1500</span>
+<span id="peakElo">Peak: 1500</span>
+      </div>
+
+    </section>
+
+    <section class="section">
+  <h2>Elo Rating History</h2>
+
+  <div id="ratingHistory">
+    No rating history yet.
+  </div>
+</section>
+    <a href="leaderboard.html" class="back">
+      ← Back to Leaderboard
+    </a>
+
+  </main>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const name = params.get("name") || "Alia Bhatt";
+
+  fetch("data/leaderboard.json")
+    .then(response => response.json())
+    .then(data => {
+      const contestant = data.rankings.find(
+        item => item.name === name
+      );
+
+      if (!contestant) {
+        return;
+      }
+
+
+      document.querySelector(".profile-header h1").textContent =
+        contestant.name;
+
+      document.querySelector(".avatar").src =
+        "../public/avatars/" + contestant.avatar;
+
+      document.querySelector(".avatar").alt =
+        contestant.name;
+
+      document.title =
+        contestant.name + " — DesiBabeBattle";
+
+      document.querySelector(".rating").textContent =
+        contestant.rating + " Elo";
+
+      document.querySelector(".rank").textContent =
+        "Global Rank #" +
+        (data.rankings
+          .sort((a, b) => b.rating - a.rating)
+          .findIndex(item => item.name === contestant.name) + 1);
+
+      document.querySelector(".form").textContent =
+        contestant.form
+          ? contestant.form.split("").join(" ")
+          : "—";
+document.getElementById("battles").textContent = contestant.battles;
+document.getElementById("wins").textContent = contestant.wins;
+document.getElementById("losses").textContent = contestant.losses;
+document.getElementById("draws").textContent = contestant.draws;
+
+document.querySelector("#winRate").textContent =
+  contestant.winRate.toFixed(1) + "%";
+const peakElo = contestant.peakElo;
+const lowestElo = contestant.lowestElo;
+
+document.querySelector("#peakElo").textContent =
+  "Peak: " + peakElo;
+
+document.querySelector("#lowestElo").textContent =
+  "Lowest: " + lowestElo;
+    })
+    .catch(error => {
+      console.error("Profile error:", error);
+    });
+</script>
+
+</body>
+</html>

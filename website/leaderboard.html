@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaderboard — DesiBabeBattle</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1020;
+      color: white;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      border-bottom: 1px solid #252b40;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+    }
+
+    nav a {
+      color: #b8bdd0;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 50px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #b8bdd0;
+      margin-bottom: 40px;
+    }
+
+    .ranking-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: #151b2d;
+      border: 1px solid #252b40;
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .rank {
+      width: 45px;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .info {
+      flex: 1;
+    }
+
+    .name {
+      font-size: 19px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .form {
+      color: #b8bdd0;
+      font-size: 14px;
+    }
+
+    .rating {
+      font-size: 22px;
+      font-weight: bold;
+      text-align: right;
+    }
+
+    .rating-label {
+      display: block;
+      color: #777f98;
+      font-size: 12px;
+      font-weight: normal;
+      margin-top: 3px;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 35px;
+      color: #ff3b81;
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 16px;
+        padding: 18px 20px;
+      }
+
+      nav {
+        gap: 16px;
+      }
+
+      main {
+        padding: 35px 14px;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .ranking-card {
+        gap: 12px;
+        padding: 14px;
+      }
+
+      .avatar {
+        width: 52px;
+        height: 52px;
+      }
+
+      .rank {
+        width: 32px;
+        font-size: 16px;
+      }
+
+      .name {
+        font-size: 16px;
+      }
+
+      .rating {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">DesiBabeBattle</div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="#">Battles</a>
+      <a href="#">Actresses</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <h1>Leaderboard</h1>
+
+    <p class="subtitle">
+      The current DesiBabeBattle rankings
+    </p>
+
+<div id="rankings"></div>
+
+    <a href="index.html" class="back">← Back to Home</a>
+
+   </main>
+
+  <script>
+    fetch("data/leaderboard.json")
+      .then(response => response.json())
+      .then(data => {
+        const rankings = document.getElementById("rankings");
+        data.rankings.sort((a, b) => b.rating - a.rating);
+
+        data.rankings.forEach((contestant, index) => {
+          const card = document.createElement("div");
+          card.className = "ranking-card";
+          card.style.cursor = "pointer";
+          card.addEventListener("click", () => {
+  window.location.href =
+    "profile.html?name=" + encodeURIComponent(contestant.name);
+});
+
+          card.innerHTML = `
+            <div class="rank">#${index + 1}</div>
+
+            <img
+              class="avatar"
+              src="../public/avatars/${contestant.avatar}"
+              alt="${contestant.name}"
+            >
+
+            <div class="info">
+              <div class="name">${contestant.name}</div>
+              <div class="form">
+                Recent Form — ${contestant.form || "—"}
+              </div>
+            </div>
+
+            <div class="rating">
+              ${contestant.rating}
+              <span class="rating-label">Elo</span>
+            </div>
+          `;
+
+          rankings.appendChild(card);
+        });
+      })
+      .catch(error => {
+        console.error("Leaderboard error:", error);
+      });
+  </script>
+
+</body>
+</html>

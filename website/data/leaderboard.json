@@ -1,0 +1,218 @@
+{
+  "rankings": [
+{
+  "name": "Alia Bhatt",
+  "rating": 1500,
+  "form": "WWDDD",
+  "avatar": "alia-bhatt.jpg",
+  "battles": 5,
+  "wins": 2,
+  "losses": 0,
+  "draws": 3,
+  "winRate": 40.0,
+  "peakElo": 1500,
+  "lowestElo": 1500,
+  "ratingHistory": []
+},
+{
+  "name": "Deepika Padukone",
+  "rating": 1500,
+  "form": "LLDDD",
+  "avatar": "deepika-padukone.jpg",
+  "battles": 5,
+  "wins": 0,
+  "losses": 2,
+  "draws": 3,
+  "winRate": 0.0,
+  "peakElo": 1500,
+  "lowestElo": 1500
+},
+{
+  "name": "Katrina Kaif",
+  "rating": 1500,
+  "form": "W",
+  "avatar": "katrina-kaif.jpg",
+  "battles": 1,
+  "wins": 1,
+  "losses": 0,
+  "draws": 0,
+  "winRate": 100.0,
+  "peakElo": 1500,
+  "lowestElo": 1500
+},
+    {
+      "name": "Anushka Sharma",
+      "rating": 1500,
+      "form": "",
+      "avatar": "anushka-sharma.jpg"
+    },
+    {
+      "name": "Kareena Kapoor",
+      "rating": 1500,
+      "form": "",
+      "avatar": "kareena-kapoor.jpg"
+    },
+    {
+      "name": "Kiara Advani",
+      "rating": 1500,
+      "form": "",
+      "avatar": "kiara-advani.jpg"
+    },
+    {
+      "name": "Priyanka Chopra",
+      "rating": 1500,
+      "form": "",
+      "avatar": "priyanka-chopra.jpg"
+    },
+    {
+      "name": "Shraddha Kapoor",
+      "rating": 1500,
+      "form": "",
+      "avatar": "shraddha-kapoor.jpg"
+    },
+    {
+      "name": "Kriti Sanon",
+      "rating": 1500,
+      "form": "",
+      "avatar": "kriti-sanon.jpg"
+    },
+    {
+      "name": "Taapsee Pannu",
+      "rating": 1500,
+      "form": "",
+      "avatar": "taapsee-pannu.jpg"
+    },
+    {
+      "name": "Disha Patani",
+      "rating": 1500,
+      "form": "",
+      "avatar": "disha-patani.jpg"
+    },
+    {
+      "name": "Rashmika Mandanna",
+      "rating": 1500,
+      "form": "",
+      "avatar": "rashmika-mandanna.jpg"
+    },
+    {
+      "name": "Janhvi Kapoor",
+      "rating": 1500,
+      "form": "",
+      "avatar": "janhvi-kapoor.jpg"
+    },
+    {
+      "name": "Mrunal Thakur",
+      "rating": 1500,
+      "form": "",
+      "avatar": "mrunal-thakur.jpg"
+    },
+    {
+      "name": "Triptii Dimri",
+      "rating": 1500,
+      "form": "",
+      "avatar": "triptii-dimri.jpg"
+    },
+    {
+      "name": "Samantha Ruth Prabhu",
+      "rating": 1500,
+      "form": "",
+      "avatar": "samantha-ruth-prabhu.jpg"
+    },
+    {
+      "name": "Aditi Rao Hydari",
+      "rating": 1500,
+      "form": "",
+      "avatar": "aditi-rao-hydari.jpg"
+    },
+    {
+      "name": "Aishwarya Rai",
+      "rating": 1500,
+      "form": "",
+      "avatar": "aishwarya-rai.jpg"
+    },
+    {
+      "name": "Pooja Hegde",
+      "rating": 1500,
+      "form": "",
+      "avatar": "pooja-hegde.jpg"
+    },
+    {
+      "name": "Sai Pallavi",
+      "rating": 1500,
+      "form": "",
+      "avatar": "sai-pallavi.jpg"
+    },
+    {
+      "name": "Sobhita Dhulipala",
+      "rating": 1500,
+      "form": "",
+      "avatar": "sobhita-dhulipala.jpg"
+    },
+    {
+      "name": "Tamannaah Bhatia",
+      "rating": 1500,
+      "form": "",
+      "avatar": "tamannaah-bhatia.jpg"
+    },
+    {
+      "name": "Nayanthara",
+      "rating": 1500,
+      "form": "",
+      "avatar": "nayanthara.jpg"
+    },
+    {
+      "name": "Madhuri Dixit",
+      "rating": 1500,
+      "form": "",
+      "avatar": "madhuri-dixit.jpg"
+    },
+    {
+      "name": "Kajal Aggarwal",
+      "rating": 1500,
+      "form": "",
+      "avatar": "kajal-aggarwal.jpg"
+    },
+    {
+      "name": "Rakul Preet Singh",
+      "rating": 1500,
+      "form": "",
+      "avatar": "rakul-preet-singh.jpg"
+    },
+    {
+      "name": "Yami Gautam",
+      "rating": 1500,
+      "form": "",
+      "avatar": "yami-gautam.jpg"
+    },
+    {
+      "name": "Bhumi Pednekar",
+      "rating": 1500,
+      "form": "",
+      "avatar": "bhumi-pednekar.jpg"
+    },
+    {
+      "name": "Parineeti Chopra",
+      "rating": 1500,
+      "form": "",
+      "avatar": "parineeti-chopra.jpg"
+    },
+    {
+      "name": "Vidya Balan",
+      "rating": 1500,
+      "form": "",
+      "avatar": "vidya-balan.jpg"
+    },
+    {
+      "name": "Trisha Krishnan",
+      "rating": 1500,
+      "form": "",
+      "avatar": "trisha-krishnan.jpg"
+    },
+    {
+      "name": "Keerthy Suresh",
+      "rating": 1500,
+      "form": "",
+      "avatar": "keerthy-suresh.jpg"
+    }
+  ]
+}

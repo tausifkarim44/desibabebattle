@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DesiBabeBattle Profile</title>
+  <style>
+  #avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 20px auto;
+  }
+  .profile {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  box-sizing: border-box;
+}
+
+.profile h1 {
+  font-size: 32px;
+  margin: 8px 0 16px;
+}
+
+.stats {
+  margin-top: 12px;
+}
+
+.stats p {
+  margin: 8px 0;
+  line-height: 1.3;
+}
+
+
+@media (max-width: 600px) {
+  .profile {
+    padding: 8px 12px;
+  }
+
+  .profile h1 {
+    font-size: 28px;
+    margin: 4px 0 12px;
+  }
+
+  #avatar {
+    width: 110px;
+    height: 110px;
+    margin: 12px auto;
+  }
+
+  .stats p {
+    margin: 5px 0;
+  }
+
+}
+</style>
+</head>
+
+<body>
+<main class="profile">
+  <h1 id="name">Actress Profile</h1>
+
+  <img id="avatar" alt="Actress avatar" />
+
+  <p id="rating">Elo: -</p>
+
+  <div class="stats">
+    <p id="rank">Rank: -</p>
+    <p id="battles">Battles: -</p>
+<p id="record">Wins: — | Losses: — | Draws: —</p>
+    <p id="winRate">Win Rate: -</p>
+    <p id="form">Recent Form: -</p>
+    <p id="peak">Peak Elo: -</p>
+    <p id="lowest">Lowest Elo: -</p>
+    <p>
+  <a id="websiteProfile" href="#" target="_blank">
+    View Full Profile →
+  </a>
+</p>
+  </div>
+
+</main>
+  <script type="module" src="./profile.ts"></script>
+</body>
+</html>

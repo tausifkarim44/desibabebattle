@@ -1,0 +1,79 @@
+{
+  "$schema": "https://developers.reddit.com/schema/config-file.v1.json",
+  "name": "desibabebattle",
+  "post": {
+    "dir": "dist/client",
+    "entrypoints": {
+      "default": {
+        "inline": true,
+        "entry": "splash.html"
+      },
+"game": {
+  "entry": "game.html"
+},
+"battle": {
+  "entry": "battle.html"
+},
+"leaderboard": {
+  "entry": "leaderboard.html"
+},
+"profile": {
+  "entry": "profile.html"
+}
+    }
+  },
+  "server": {
+    "dir": "dist/server",
+    "entry": "index.cjs"
+  },
+  "menu": {
+    "items": [
+      {
+        "label": "Create a new post",
+        "description": "desibabebattle",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/post-create"
+      },
+{
+  "label": "Example form",
+  "description": "desibabebattle",
+  "location": "subreddit",
+  "forUserType": "moderator",
+  "endpoint": "/internal/menu/example-form"
+},
+{
+  "label": "Open Leaderboard",
+  "description": "View DesiBabeBattle rankings",
+  "location": "subreddit",
+  "forUserType": "moderator",
+  "endpoint": "/internal/menu/leaderboard"
+},
+      {
+        "label": "Test Actress Profile",
+        "description": "Open Alia Bhatt profile",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/profile-test"
+      }
+    ]
+  },
+  "forms": {
+    "exampleForm": "/internal/form/example-submit"
+  },
+"triggers": {
+  "onAppInstall": "/internal/triggers/on-app-install",
+  "onPostSubmit": "/internal/triggers/on-post-submit"
+},
+  "scheduler": {
+    "tasks": {
+      "end-battle": {
+        "endpoint": "/internal/scheduler/end-battle"
+      }
+    }
+  },
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build"
+  }
+}
