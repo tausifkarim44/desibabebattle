@@ -203,45 +203,7 @@ result:
 });
 
 }
-// H2H history
-for (let i = 0; i < contestants.length; i++) {
-  for (let j = i + 1; j < contestants.length; j++) {
-    const nameA = contestants[i] ?? '';
-    const nameB = contestants[j] ?? '';
 
-    const names = [nameA, nameB].sort((a, b) =>
-      a.localeCompare(b)
-    );
-
-    const h2hKey = `h2h:${names[0]}:${names[1]}`;
-
-    let resultA: 'W' | 'L' | 'D';
-    let resultB: 'W' | 'L' | 'D';
-
-    if ((votes[i] ?? 0) > (votes[j] ?? 0)) {
-      resultA = 'W';
-      resultB = 'L';
-    } else if ((votes[i] ?? 0) < (votes[j] ?? 0)) {
-      resultA = 'L';
-      resultB = 'W';
-    } else {
-      resultA = 'D';
-      resultB = 'D';
-    }
-
-    await redis.hSet(h2hKey, {
-      [Date.now().toString()]: JSON.stringify({
-        battleId: postId,
-        contestants: [nameA, nameB],
-        votes: [votes[i] ?? 0, votes[j] ?? 0],
-        result: {
-          [nameA]: resultA,
-          [nameB]: resultB,
-        },
-      }),
-    });
-  }
-}
 for (let i = 0; i < contestants.length; i++) {
   const celebrity = celebrities.find(
     (c) =>
@@ -287,31 +249,7 @@ for (let i = 0; i < contestants.length; i++) {
 
   await redis.set(formKey, JSON.stringify(form));
 }
-for (let i = 0; i < contestants.length; i++) {
-  for (let j = i + 1; j < contestants.length; j++) {
-const pairNames = [
-  contestants[i] ?? '',
-  contestants[j] ?? '',
-].sort();
 
-    const h2hKey = `h2h:${pairNames[0]}:${pairNames[1]}`;
-
-    await redis.hSet(h2hKey, {
-      [Date.now().toString()]: JSON.stringify({
-        battleId: postId,
-        contestants: [contestants[i], contestants[j]],
-        votes: [votes[i] ?? 0, votes[j] ?? 0],
-        winner:
-          (votes[i] ?? 0) > (votes[j] ?? 0)
-            ? contestants[i]
-            : (votes[j] ?? 0) > (votes[i] ?? 0)
-              ? contestants[j]
-              : null,
-        ratings: [newRatings[i] ?? ratings[i] ?? 1500, newRatings[j] ?? ratings[j] ?? 1500],
-      }),
-    });
-  }
-}
     console.log('Battle ended:', postId);
     console.log('Votes:', votes);
     console.log('Winner:', winner ?? 'DRAW');

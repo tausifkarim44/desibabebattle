@@ -213,11 +213,18 @@ api.get('/results', async (c) => {
     );
   }
 
+  const post = await reddit.getPostById(postId as `t3_${string}`);
+  const postData = await post.getPostData();
+
+  const contestants = Array.isArray(postData?.contestants)
+    ? postData.contestants
+    : [];
+
   const votes = [];
 
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < contestants.length; i++) {
     const count = await redis.get(`votes:${postId}:${i}`);
-    votes.push(count ? parseInt(count) : 0);
+    votes.push(count ? parseInt(count, 10) : 0);
   }
 
   return c.json({
@@ -280,37 +287,97 @@ api.get('/status', async (c) => {
     );
   }
 });
-api.get('/my-vote', async (c) => {
-  const { postId } = context;
+// --------------------------------------------------
+// Battles
+// --------------------------------------------------
 
-  if (!postId) {
-    return c.json<ErrorResponse>(
+api.get('/battles', async (c) => {
+  try {
+    const posts = await reddit.getNewPosts({
+      subredditName: 'desibabebattle_dev',
+      limit: 100,
+      pageSize: 100,
+    }).all();
+
+    const live: any[] = [];
+    const completed: any[] = [];
+
+    for (const post of posts) {
+      try {
+        const postData = await post.getPostData();
+
+        // Only include posts created by our battle system.
+        // Battle posts always contain contestants + endTime.
+        if (
+          !postData ||
+          !Array.isArray(postData.contestants) ||
+          postData.contestants.length < 2 ||
+          typeof postData.endTime !== 'number'
+        ) {
+          continue;
+        }
+
+        const battle = {
+          id: post.id,
+          title: post.title,
+          contestants: postData.contestants,
+          imageUrl: postData.imageUrl ?? '',
+          avatarUrls: postData.avatarUrls ?? [],
+          endTime: postData.endTime,
+          originalPostId: postData.originalPostId ?? null,
+          permalink: post.permalink,
+          status: postData.status ?? null,
+          votes: postData.votes ?? [],
+          winner: postData.winner ?? null,
+          winnerIndices: postData.winnerIndices ?? [],
+          ratings: postData.ratings ?? [],
+          endedAt: postData.endedAt ?? null,
+        };
+
+        const isEnded = postData.status === 'ended';
+
+        if (isEnded) {
+          completed.push(battle);
+        } else if (postData.endTime > Date.now()) {
+          live.push(battle);
+        }
+      } catch (error) {
+        console.error(
+          'Failed to process post:',
+          post.id,
+          error
+        );
+      }
+    }
+
+    // Newest live battles first
+    live.sort((a, b) => a.endTime - b.endTime);
+
+    // Most recently completed battles first
+    completed.sort(
+      (a, b) => (b.endedAt ?? 0) - (a.endedAt ?? 0)
+    );
+
+    return c.json({
+      type: 'battles',
+      live,
+      completed,
+    });
+  } catch (error) {
+    console.error('Failed to load battles:', error);
+
+    return c.json(
       {
-        status: 'error',
-        message: 'postId is required',
+        type: 'battles',
+        live: [],
+        completed: [],
+        error: 'Failed to load battles',
       },
-      400
+      500
     );
   }
-
-  const username = await reddit.getCurrentUsername();
-
-  if (!username) {
-    return c.json({
-      voted: false,
-      contestantIndex: null,
-    });
-  }
-
-  const voteKey = `vote:${postId}:${username}`;
-  const existingVote = await redis.get(voteKey);
-
-  return c.json({
-    voted: existingVote != null,
-    contestantIndex:
-      existingVote != null ? parseInt(existingVote, 10) : null,
-  });
 });
+
 
 api.get('/leaderboard', async (c) => {
   const rankings = [];
